@@ -4,12 +4,12 @@
 session_start();
 
 $varsession = $_SESSION['email'];
-$auth = $_SESSION['var'];
+
 if($varsession==null || $varsession=''){
     echo 'Usted no tiene autorizacion';
     die();
 }
-if ($auth == null || $auth == 'user' || $auth == ''){
+if ($_SESSION['var'] == null || $_SESSION['var'] == 'user' || $_SESSION['var'] == ''){
     //echo 'Usted no tiene autorizacion';
     echo "<script> alert('No tienes autorizacion para este modulo'); 
     window.location.href='index.php';</script>";

@@ -13,14 +13,14 @@
     <script src="https://kit.fontawesome.com/d248edc114.js" crossorigin="anonymous"></script>
     <script src="assets/script.js" crossorigin="anonymous"></script>
 
-    <title>Administrador de Productos</title>
+    <title>ALMACEN KEKA</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abel|Poiret+One|ZCOOL+XiaoWei&display=swap">
 </head>
 <body>
 
     <!-- nav bar -->
     <nav class="navbar navbar-expand-md navbar-light bg-light border"> 
-        <a href="#" class="navbar-brand">Almacen KEKA</a>
+        <a href="#" class="navbar-brand">Almacén KEKA</a>
         <button class="navbar-toggler ml-auto mb-2 bg-light" type="button" data-toggle="collapse" data-target="#myNavbar"> 
             <span class="navbar-toggler-icon"></span>
         </button>

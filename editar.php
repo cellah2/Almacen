@@ -27,6 +27,7 @@ if(isset($_GET['id_producto'])){
         $precio = $row['precio'];
         $stock = $row['stock'];
         $categoria = $row['cod_categoria'];
+        $marca = $row['cod_marca'];
     }
 
 }
@@ -36,8 +37,9 @@ if (isset($_POST['update'])){
     $precio = $_POST['precio'];
     $stock = $_POST['stock'];
     $categoria = $_POST['cod_categoria'];
+    $marca = $_POST['cod_marca'];
 
-    $query = "UPDATE productos set nombre='$nombre', precio=$precio , stock=$stock , cod_categoria=$categoria WHERE id_producto = $id";
+    $query = "UPDATE productos set nombre='$nombre', precio=$precio , stock=$stock , cod_categoria=$categoria, cod_marca=$marca WHERE id_producto = $id";
     mysqli_query($link,$query);
 
     $_SESSION['message'] = "Producto editado satisfactoriamente !";
@@ -101,6 +103,22 @@ $resultado = $link->query($consulta);
         <?php } ?>
                             </select>
                         </div>
+
+                        <div class="form-group">
+                            <label for="cod_marca">Marca:</label>
+                            <select name="cod_marca" id="cod_marca" class="form-control border border-warning">
+                            <?php
+$consulta2="SELECT * FROM marcas";
+$resultado2 = $link->query($consulta2);
+        
+?>
+                                <option selected>Elegir...</option>
+                                <?php while($mostrar=$resultado2->fetch_assoc()){ ?>
+                                <option value="<?php echo $mostrar['id_marca']?>"><?php echo $mostrar['id_marca']?> - <?php echo $mostrar['nombre_marca'] ?></option>
+        <?php } ?>
+                            </select>
+                        </div>
+
                             <button class="btn-warning" name="update">
                                 Actualizar Producto
                             </button>

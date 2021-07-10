@@ -56,6 +56,7 @@ include("includes/header.php");
             <td>PRODUCTO</td>
             <td>PRECIO</td>
             <td>STOCK</td>
+            
 	<td>
   <?php
       $query_categorias = mysqli_query($link,"select * from categorias");
@@ -76,6 +77,27 @@ include("includes/header.php");
                   ?>
       </select>
   </td>
+  <td>
+  <?php
+      $query_marcas = mysqli_query($link,"select * from marcas");
+      $result_marcas = mysqli_num_rows($query_marcas);
+      ?>
+      <select name="marcas" id="search_marcas" class="select_location">
+      <option selected>MARCA</option>
+                  <?php 
+                  if($result_marcas > 0){
+                    while($marca = mysqli_fetch_array($query_marcas)) {
+                      ?>
+                      <option value="<?php echo $marca["id_marca"]; ?>"  
+                      id="<?php echo $marca["id_marca"] ?>"> <?php echo $marca["nombre_marca"]; ?> </option>
+                      <?php
+
+                    }
+                  }
+                  ?>
+      </select>
+  </td>                
+
             <td>OPERACIONES</td>
           </tr>
         </thead>
@@ -120,6 +142,15 @@ $var=mysqli_query($link,"SELECT * from categorias where id_categoria=$cat");
 $ext = $var->fetch_array();
 
 echo $cat . " - " . $ext['nombre_categoria'];
+
+?>
+</td>
+<td>
+<?php $mar = $mostrar['cod_marca'];
+$var2=mysqli_query($link,"SELECT * from marcas where id_marca=$mar");
+$ext2 = $var2->fetch_array();
+
+echo $mar . " - " . $ext2['nombre_marca'];
 
 ?>
 </td>

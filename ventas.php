@@ -29,7 +29,7 @@ include("conexion.php");
 
 <style>
 .collapsible {
-  background-color: #8B2121;
+  background-color: #0275d8;
   color: white;
   cursor: pointer;
   padding: 18px;
@@ -112,7 +112,7 @@ include("conexion.php");
         <br>
         <div class = "row mx-4">
             <div class="col">
-                <h3 class="itemCartTotal text-white">Total: 0</h3>
+                <h3 style = "font-family: impact" class="itemCartTotal text-black">Total: 0</h3>
             </div>
             <div class="col d-flex justify-content-end">
                 <button class="btn btn-success">PAGAR</h3>
@@ -145,7 +145,7 @@ while($mostrarP=$varProductos->fetch_assoc()){
         <tr class = "producto" id="<?php echo $mostrarP['id_producto'] ?>">
             <td class = "nombreP"><?php echo $mostrarP['nombre'] ?></td>
             <td class = "precioP"><?php echo $mostrarP['precio'] ?></td>
-            <td><button class="btn btn-primary btn-sm boton"><i class="fas fa-plus text-dark fa-sm"></i></button></td>
+            <td><button class="btn btn-success btn-sm boton"><i class="fas fa-plus text-dark fa-sm"></i></button></td>
         </tr>
  <?php } ?>
 

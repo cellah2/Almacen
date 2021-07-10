@@ -41,7 +41,7 @@ $rcount=mysqli_num_rows($resultado);
                         <li class="breadcrumb-item active" aria-current="page">Dashboard</li>  
                         </ol>
                     </nav>
-                    <h3>Bienvenido al Administrador sr. <?php echo $_SESSION['var']?></h3>
+                    <h3>Bienvenido al panel de Administrador sr/a. <?php echo $_SESSION['email']?></h3>
                     
                     <section>
                     <div class="row pt-5 mt-3 mb-5">

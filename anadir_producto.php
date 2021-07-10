@@ -84,4 +84,5 @@ $resultado = $link->query($consulta);
 
 </section>
 
+
 <?php include("includes/footer.php"); ?>

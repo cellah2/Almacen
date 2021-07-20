@@ -153,6 +153,15 @@ echo $ext2['nombre_marca'];
 
 ?>
 </td>
+<td>
+<?php $mar = $mostrar['cod_marca'];
+$var2=mysqli_query($link,"SELECT * from marcas where id_marca=$mar");
+$ext2 = $var2->fetch_array();
+
+echo $mar . " - " . $ext2['nombre_marca'];
+
+?>
+</td>
 
             <td>
               <a href="editar.php?id_producto='<?php echo $mostrar['id_producto']?>'" class="btn btn-secondary">Editar</a>

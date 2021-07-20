@@ -33,6 +33,7 @@ if($filas>0){
         header("location:ventas.php");
     }
 
+    header("location:ventas.php");
 
 }else {
     echo "<script> alert('Este usuario no existe, intente denuevo'); 

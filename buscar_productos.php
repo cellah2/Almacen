@@ -54,7 +54,7 @@ include("includes/header.php");
                 <table class="table table-striped table-hover table-bordered table-sm bg-white">
         <thead>
           <tr>
-            <td>ID</td>
+          <!--    <td>ID</td>-->
             <td>PRODUCTO</td>
             <td>PRECIO</td>
             <td>STOCK</td>
@@ -93,6 +93,27 @@ include("includes/header.php");
                   ?>
       </select>
   </td>
+  <td>
+  <?php
+      $query_marcas = mysqli_query($link,"select * from marcas");
+      $result_marcas = mysqli_num_rows($query_marcas);
+      ?>
+      <select name="marcas" id="search_marcas" class="select_location">
+      <option selected>MARCA</option>
+                  <?php 
+                  if($result_marcas > 0){
+                    while($marca = mysqli_fetch_array($query_marcas)) {
+                      ?>
+                      <option value="<?php echo $marca["id_marca"]; ?>"  
+                      id="<?php echo $marca["id_marca"] ?>"> <?php echo $marca["nombre_marca"]; ?> </option>
+                      <?php
+
+                    }
+                  }
+                  ?>
+      </select>
+  </td>  
+   
             <td>OPERACIONES</td>
           </tr>
         </thead>
@@ -110,7 +131,7 @@ $resultado = $link->query($consulta);
        
         ?>
           <tr>
-            <td><?php echo $mostrar['id_producto'] ?></td>
+           <!--  <td><?php echo $mostrar['id_producto'] ?></td>  -->
             <td><?php echo $mostrar['nombre'] ?></td>
             <td><?php echo $mostrar['precio'] ?></td>
             <td><?php echo $mostrar['stock'] ?></td>
@@ -119,14 +140,23 @@ $resultado = $link->query($consulta);
 $var=mysqli_query($link,"SELECT * from categorias where id_categoria=$cat");
 $ext = $var->fetch_array();
 
-echo $cat . " - " . $ext['nombre_categoria'];
+echo $ext['nombre_categoria'];
+
+?>
+</td>
+<td>
+<?php $mar = $mostrar['cod_marca'];
+$var2=mysqli_query($link,"SELECT * from marcas where id_marca=$mar");
+$ext2 = $var2->fetch_array();
+
+echo $ext2['nombre_marca'];
 
 ?>
 </td>
 
             <td>
-              <a href="editar.php?id_producto='<?php echo $mostrar['id_producto']?>'" class="btn btn-secondary">Edit</a>
-              <a href="eliminar.php?id_producto='<?php echo $mostrar['id_producto']?>'" class="btn btn-danger btn-delete" data-toggle="modal" data-target="#eliminarProducto">Delete</a>
+              <a href="editar.php?id_producto='<?php echo $mostrar['id_producto']?>'" class="btn btn-secondary">Editar</a>
+              <a href="eliminar.php?id_producto='<?php echo $mostrar['id_producto']?>'" class="btn btn-danger btn-delete" data-toggle="modal" data-target="#eliminarProducto">Eliminar</a>
             </td>
           </tr>
         <?php

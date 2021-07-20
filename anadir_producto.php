@@ -70,6 +70,22 @@ $resultado = $link->query($consulta);
         <?php } ?>
                             </select>
                         </div>
+
+                        <div class="form-group">
+                            <label for="cod_marca">Marca: selecciona una marca</label>
+                            <select name="cod_marca" id="cod_marca" class="form-control border border-success">
+                            <?php
+$consulta2="SELECT * FROM marcas";
+$resultado2 = $link->query($consulta2);
+        
+?>
+                                <option selected>Elegir...</option>
+                                <?php while($mostrar2=$resultado2->fetch_assoc()){ ?>
+                                <option value="<?php echo $mostrar2['id_marca']?>"><?php echo $mostrar2['id_marca']?> - <?php echo $mostrar2['nombre_marca'] ?></option>
+        <?php } ?>
+                            </select>
+                        </div>            
+
                         <button type="submit" class="btn btn-success"><i class="fa fa-check-circle"></i>Guardar</button>
                     </form>
                 

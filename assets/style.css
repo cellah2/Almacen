@@ -1,5 +1,5 @@
 body {
-    font-family: 'ZCOOL XiaoWei', serif;
+    font-family: 'Tahoma'!important;
     background-color: white;
 }
 
@@ -16,9 +16,54 @@ body {
     transform: translateY(-1px);
 }
 
+#totales {
+    position: fixed;
+    bottom:0;
+    width: 50%;
+}
+
+/* new login style */
+.card-title{ font-weight:300; }
+
+.btn{
+	font-size: 14px;
+	margin-top:20px;
+}
+
+
+.login-form{ 
+	width:330px;
+	margin:20px;
+}
+
+.sign-up{
+	text-align:center;
+	padding:20px 0 0;
+}
+
+.alert{
+	margin-bottom:-30px;
+	font-size: 13px;
+	margin-top:20px;
+}
+.global-container{
+    width: 500px;
+	height:100%;
+    
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #f5f5f5;
+}
+
+form{
+	padding-top: 10px;
+	font-size: 14px;
+	margin-top: 30px;
+}
+
+
 /* login styles */
-
-
 
 input[type="text"], input[type="password"]{
 outline: none;

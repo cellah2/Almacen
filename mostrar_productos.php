@@ -52,17 +52,18 @@ include("includes/header.php");
                 <table class="table table-striped table-hover table-bordered table-sm bg-white">
         <thead>
           <tr>
-            <td>ID</td>
-            <td>PRODUCTO</td>
-            <td>PRECIO</td>
-            <td>STOCK</td>
+         <!--    <td>ID</td> -->
+            <td><b>PRODUCTO</b></td>
+            <td><b>PRECIO</b></td>
+            <td><b>STOCK</b></td>
+            
 	<td>
   <?php
       $query_categorias = mysqli_query($link,"select * from categorias");
       $result_categorias = mysqli_num_rows($query_categorias);
       ?>
       <select name="categorias" id="search_categorias" class="select_location">
-      <option selected>CATEGORIA</option>
+      <option selected><b>CATEGORIA</b></option>
                   <?php 
                   if($result_categorias > 0){
                     while($categoria = mysqli_fetch_array($query_categorias)) {
@@ -76,7 +77,28 @@ include("includes/header.php");
                   ?>
       </select>
   </td>
-            <td>OPERACIONES</td>
+  <td>
+  <?php
+      $query_marcas = mysqli_query($link,"select * from marcas");
+      $result_marcas = mysqli_num_rows($query_marcas);
+      ?>
+      <select name="marcas" id="search_marcas" class="select_location">
+      <option selected><b>MARCA</b></option>
+                  <?php 
+                  if($result_marcas > 0){
+                    while($marca = mysqli_fetch_array($query_marcas)) {
+                      ?>
+                      <option value="<?php echo $marca["id_marca"]; ?>"  
+                      id="<?php echo $marca["id_marca"] ?>"> <?php echo $marca["nombre_marca"]; ?> </option>
+                      <?php
+
+                    }
+                  }
+                  ?>
+      </select>
+  </td>                
+
+            <td><b>OPERACIONES</b></td>
           </tr>
         </thead>
         <?php
@@ -86,7 +108,7 @@ include("includes/header.php");
           $result_registros = mysqli_fetch_array($sql_totales);
           $total_registro = $result_registros['total_registro'];
 
-          $por_pagina = 5;
+          $por_pagina = 10;
 
           if(empty($_GET['pagina']))
           {
@@ -99,7 +121,7 @@ include("includes/header.php");
           $total_paginas = ceil($total_registro / $por_pagina);
 
 
-$consulta="SELECT * FROM productos ORDER BY id_producto ASC LIMIT $desde,$por_pagina";
+$consulta="SELECT * FROM productos ORDER BY nombre ASC LIMIT $desde,$por_pagina";
 $resultado = $link->query($consulta);
 
 ?>
@@ -110,7 +132,7 @@ $resultado = $link->query($consulta);
        
         ?>
           <tr>
-            <td><?php echo $mostrar['id_producto'] ?></td>
+           <!--  <td><?php echo $mostrar['id_producto'] ?></td> -->
             <td><?php echo $mostrar['nombre'] ?></td>
             <td><?php echo $mostrar['precio'] ?></td>
             <td><?php echo $mostrar['stock'] ?></td>
@@ -119,7 +141,16 @@ $resultado = $link->query($consulta);
 $var=mysqli_query($link,"SELECT * from categorias where id_categoria=$cat");
 $ext = $var->fetch_array();
 
-echo $cat . " - " . $ext['nombre_categoria'];
+echo $ext['nombre_categoria'];
+
+?>
+</td>
+<td>
+<?php $mar = $mostrar['cod_marca'];
+$var2=mysqli_query($link,"SELECT * from marcas where id_marca=$mar");
+$ext2 = $var2->fetch_array();
+
+echo $ext2['nombre_marca'];
 
 ?>
 </td>

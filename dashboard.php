@@ -23,9 +23,15 @@ $conn=mysqli_connect("localhost","root","","almacenkeka");
 
 
 $consulta="SELECT * FROM productos";
+$consultaM="SELECT * FROM marcas";
+$consultaC="SELECT * FROM categorias";
 $resultado = mysqli_query($conn,$consulta);
-
+$resultadoM = mysqli_query($conn,$consultaM);
+$resultadoC = mysqli_query($conn,$consultaC);
 $rcount=mysqli_num_rows($resultado);
+
+$rcountM=mysqli_num_rows($resultadoM);
+$rcountC=mysqli_num_rows($resultadoC);
 
 
 ?>
@@ -41,7 +47,7 @@ $rcount=mysqli_num_rows($resultado);
                         <li class="breadcrumb-item active" aria-current="page">Dashboard</li>  
                         </ol>
                     </nav>
-                    <h3>Bienvenido al Administrador sr. <?php echo $_SESSION['var']?></h3>
+                    <h3>Bienvenido al panel de Administrador sr/a. <?php echo $_SESSION['email']?></h3>
                     
                     <section>
                     <div class="row pt-5 mt-3 mb-5">
@@ -85,14 +91,14 @@ $rcount=mysqli_num_rows($resultado);
                                         <div class="d-flex justify-content-between">
                                             <i class="fas fa-users fa-3x text-info"></i>
                                             <div class="text-right text-secondary">
-                                            <h5>Usuarios</h5>
-                                            <h3>20</h3>
+                                            <h5>Marcas</h5>
+                                            <h3><?php echo $rcountM; ?></h3>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="card-footer text-secondary">
                                         <i class="fas fa-sync mr-3"></i>
-                                        <span>UPdated now</span>
+                                        <span>Actualizado ahora</span>
                                     </div>   
                                 </div>
                             </div>
@@ -102,14 +108,14 @@ $rcount=mysqli_num_rows($resultado);
                                         <div class="d-flex justify-content-between">
                                             <i class="fas fa-chart-line fa-3x text-danger"></i>
                                             <div class="text-right text-secondary">
-                                            <h5>Ofertas</h5>
-                                            <h3>120</h3>
+                                            <h5>Categorias</h5>
+                                            <h3><?php echo $rcountC; ?></h3>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="card-footer text-secondary">
                                         <i class="fas fa-sync mr-3"></i>
-                                        <span>UPdated now</span>
+                                        <span>Actualizado ahora</span>
                                     </div>   
                                 </div>
                             </div>
